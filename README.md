@@ -7,7 +7,7 @@
   
   [![Next.js](https://img.shields.io/badge/Next.js-16.0-black?style=flat-square&logo=next.js)](https://nextjs.org/)
   [![React](https://img.shields.io/badge/React-19.2-blue?style=flat-square&logo=react)](https://reactjs.org/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 </div>
 
@@ -23,11 +23,12 @@
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 16
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
+- **Framework**: Next.js 16.0
+- **Language**: TypeScript 5.9
+- **UI Library**: React 19.2
+- **Styling**: Tailwind CSS v4.1
 - **Icons**: Lucide React
-- **Animation**: Framer Motion
+- **CSS Processing**: LightningCSS
 
 ## 🚀 Getting Started
 
@@ -54,20 +55,52 @@ npm install
 ```bash
 # Run development server
 npm run dev
-
-# Clean build (recommended)
-npm run dev:clean
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+### Troubleshooting
+
+If you encounter issues with the development server:
+
+```bash
+# Clean cache and restart
+npm run clean
+npm run dev
+
+# Or use the combined command
+npm run dev:clean
+```
+
 ## 📦 Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run dev:clean` - Clean cache and start dev server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+| Script              | Description                               |
+| ------------------- | ----------------------------------------- |
+| `npm run dev`       | Start development server with hot reload  |
+| `npm run build`     | Build for production                      |
+| `npm run start`     | Start production server (run after build) |
+| `npm run lint`      | Run ESLint to check code quality          |
+| `npm run clean`     | Remove `.next` cache directory            |
+| `npm run dev:clean` | Clean cache and start dev server          |
+
+### Quick Start (After Clone)
+
+```bash
+# First time setup
+npm install
+
+# Start development
+npm run dev
+
+# Open http://localhost:3000
+```
+
+### Daily Use
+
+```bash
+# Just start the dev server
+npm run dev
+```
 
 ## 🎨 Customization
 
@@ -81,5 +114,3 @@ Edit the content in `src/app/page.tsx` to customize:
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
-
----

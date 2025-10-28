@@ -168,7 +168,8 @@ export default function Portfolio() {
               href='https://github.com/luisbrito2900'
               target='_blank'
               rel='noopener noreferrer'
-              className='text-white/60 hover:text-white hover:scale-125 transition-all'
+              onMouseMove={handleMouseMove}
+              className='button-glow text-white/60 hover:text-white hover:scale-125 transition-all'
             >
               <Github size={28} />
             </a>
@@ -176,13 +177,15 @@ export default function Portfolio() {
               href='https://www.linkedin.com/in/luis-brito-54ba95209'
               target='_blank'
               rel='noopener noreferrer'
-              className='text-white/60 hover:text-white hover:scale-125 transition-all'
+              onMouseMove={handleMouseMove}
+              className='button-glow text-white/60 hover:text-white hover:scale-125 transition-all'
             >
               <Linkedin size={28} />
             </a>
             <a
               href='mailto:luisjahziel1029@gmail.com'
-              className='text-white/60 hover:text-white hover:scale-125 transition-all'
+              onMouseMove={handleMouseMove}
+              className='button-glow text-white/60 hover:text-white hover:scale-125 transition-all'
             >
               <Mail size={28} />
             </a>
@@ -465,7 +468,8 @@ export default function Portfolio() {
                 href='https://github.com/luisbrito2900'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all'
+                onMouseMove={handleMouseMove}
+                className='button-glow p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all'
               >
                 <Github size={24} />
               </a>
@@ -473,13 +477,15 @@ export default function Portfolio() {
                 href='https://www.linkedin.com/in/luis-brito-54ba95209'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all'
+                onMouseMove={handleMouseMove}
+                className='button-glow p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all'
               >
                 <Linkedin size={24} />
               </a>
               <a
                 href='mailto:luisjahziel1029@gmail.com'
-                className='p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all'
+                onMouseMove={handleMouseMove}
+                className='button-glow p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all'
               >
                 <Mail size={24} />
               </a>
