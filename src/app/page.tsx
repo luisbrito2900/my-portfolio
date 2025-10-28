@@ -39,7 +39,10 @@ export default function Portfolio() {
   };
 
   return (
-    <div className='bg-black text-white min-h-screen'>
+    <div className='bg-black text-white min-h-screen relative'>
+      {/* Fondo unificado con gradiente */}
+      <div className='fixed inset-0 bg-gradient-to-br from-purple-950/30 via-black to-pink-950/30 pointer-events-none z-0' />
+      <div className='fixed inset-0 bg-[radial-gradient(circle_at_center_top,rgba(120,119,198,0.1),transparent_50%)] pointer-events-none z-0' />
       {/* Navigation */}
       <nav className='fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10'>
         <div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
@@ -88,19 +91,16 @@ export default function Portfolio() {
       {/* Hero Section */}
       <section
         id='home'
-        className='min-h-screen flex items-center justify-center relative overflow-hidden'
+        className='min-h-screen flex items-center justify-center relative overflow-hidden z-10'
       >
-        <div className='absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20' />
-        <div className='absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.15),rgba(0,0,0,0))]' />
-
         <div className='max-w-4xl mx-auto px-6 py-20 text-center relative z-10'>
-          <div className='w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 p-1'>
+          <div className='w-40 h-40 md:w-48 md:h-48 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 p-1'>
             <div className='w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden'>
               <Image
                 src='/profile-photo.jpg'
                 alt='Luis Brito'
-                width={128}
-                height={128}
+                width={192}
+                height={192}
                 className='rounded-full object-cover object-center w-full h-full'
                 priority
               />
@@ -168,9 +168,9 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id='about' className='min-h-screen py-20 px-6 relative'>
+      <section id='about' className='min-h-screen py-20 px-6 relative z-10'>
         <div className='max-w-7xl mx-auto'>
-          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'>
+          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             About Me
           </h2>
 
@@ -234,12 +234,9 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section
-        id='skills'
-        className='min-h-screen py-20 px-6 relative bg-gradient-to-b from-black to-purple-900/10'
-      >
+      <section id='skills' className='min-h-screen py-20 px-6 relative z-10'>
         <div className='max-w-7xl mx-auto'>
-          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'>
+          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             Skills & Technologies
           </h2>
 
@@ -251,7 +248,7 @@ export default function Portfolio() {
                   'Cypress',
                   'Playwright',
                   'WebdriverIO',
-                  'Selenium',
+                  'Selenium Webdriver',
                   'Appium',
                   'Detox',
                 ],
@@ -260,11 +257,11 @@ export default function Portfolio() {
                 title: 'Languages & Tools',
                 tech: [
                   'JavaScript',
+                  'Python',
                   'Java',
-                  'Postman',
                   'TestRail',
                   'BrowserStack',
-                  'Jenkins',
+                  'Postman',
                 ],
               },
               {
@@ -298,9 +295,9 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id='projects' className='min-h-screen py-20 px-6 relative'>
+      <section id='projects' className='min-h-screen py-20 px-6 relative z-10'>
         <div className='max-w-7xl mx-auto'>
-          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'>
+          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             Featured Projects
           </h2>
 
@@ -393,12 +390,9 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section
-        id='contact'
-        className='min-h-screen py-20 px-6 relative bg-gradient-to-b from-black to-purple-900/20'
-      >
+      <section id='contact' className='min-h-screen py-20 px-6 relative z-10'>
         <div className='max-w-4xl mx-auto'>
-          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'>
+          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             Let's Work Together!
           </h2>
 
