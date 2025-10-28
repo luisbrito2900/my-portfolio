@@ -83,7 +83,3 @@ Edit the content in `src/app/page.tsx` to customize:
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
-
-<div align="center">
-  Made with ❤️ by Luis Brito | ISTQB Certified Tester
-</div>
