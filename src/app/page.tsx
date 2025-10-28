@@ -1,18 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import {
   Github,
   Linkedin,
   Mail,
   Code,
-  Database,
-  Globe,
   Menu,
   X,
   ArrowRight,
-  Sparkles,
   ExternalLink,
+  Smartphone,
+  GitBranch,
+  Search,
 } from 'lucide-react';
 
 export default function Portfolio() {
@@ -94,17 +95,22 @@ export default function Portfolio() {
 
         <div className='max-w-4xl mx-auto px-6 py-20 text-center relative z-10'>
           <div className='w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 p-1'>
-            <div className='w-full h-full rounded-full bg-black flex items-center justify-center text-5xl'>
-              👨‍💻
+            <div className='w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden'>
+              <Image
+                src='/profile-photo.jpg'
+                alt='Luis Brito'
+                width={128}
+                height={128}
+                className='rounded-full object-cover object-center w-full h-full'
+                priority
+              />
             </div>
           </div>
 
           <h1 className='text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent'>
             Hello, I'm Luis
           </h1>
-          <h2 className='text-5xl md:text-7xl font-bold mb-8'>
-            QA Automation Engineer
-          </h2>
+          <h2 className='text-5xl md:text-7xl font-bold mb-8'>SDET</h2>
           <p className='text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto'>
             ISTQB Certified Tester with 5+ years of experience
           </p>
@@ -197,17 +203,17 @@ export default function Portfolio() {
                   desc: 'Cypress, Playwright, WebdriverIO',
                 },
                 {
-                  icon: <Database size={32} />,
+                  icon: <Smartphone size={32} />,
                   title: 'Mobile Testing',
-                  desc: 'Appium, Detox, Cross-platform',
+                  desc: 'Appium, Detox',
                 },
                 {
-                  icon: <Globe size={32} />,
+                  icon: <GitBranch size={32} />,
                   title: 'CI/CD Integration',
                   desc: 'Jenkins, GitHub Actions, GitLab',
                 },
                 {
-                  icon: <Sparkles size={32} />,
+                  icon: <Search size={32} />,
                   title: 'Quality Assurance',
                   desc: 'ISTQB Certified, Test Strategy',
                 },
@@ -426,7 +432,8 @@ export default function Portfolio() {
               </div>
               <button
                 type='submit'
-                className='w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105 transition-all'
+                onMouseMove={handleMouseMove}
+                className='button-glow w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105 transition-all'
               >
                 Send Message
               </button>
@@ -458,16 +465,6 @@ export default function Portfolio() {
             </div>
           </div>
         </div>
-
-        <footer className='text-center mt-20 text-gray-500'>
-          <p>
-            © 2024 Luis Brito · ISTQB Certified Tester · San Cristóbal,
-            Dominican Republic
-          </p>
-          <p className='mt-2 text-sm'>
-            Made with ❤️ using Next.js and Tailwind CSS
-          </p>
-        </footer>
       </section>
     </div>
   );

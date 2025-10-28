@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Luis Brito | SDET',
-  description: 'SDET with 5 years of experience in the industry',
+  description: 'SDET with 5+ years of experience in the industry',
 };
 
 export default function RootLayout({
