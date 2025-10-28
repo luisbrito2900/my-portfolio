@@ -1,0 +1,153 @@
+{
+  "name": "Luis Brito",
+  "title": "Software Quality Assurance Engineer",
+  "subtitle": "ISTQB Certified Tester · QA Automation Specialist",
+  "location": "San Cristóbal, Dominican Republic",
+  "contact": {
+    "phone": "+1 849-267-7449",
+    "email": "luisjahziel1029@gmail.com",
+    "github": "https://github.com/luisbrito2900",
+    "linkedin": "https://www.linkedin.com/in/luis-brito-54ba95209"
+  },
+  "quote": "Challenges are what make life interesting; overcoming them is what makes life meaningful.",
+  "summary": "Dedicated QA Engineer experienced in Agile environments, specialized in test automation for both web and mobile applications. Known for attention to detail, adaptability, and proactive problem-solving. Passionate about improving testing efficiency and product quality through CI/CD integration and scalable automation frameworks.",
+  "techStack": [
+    "Cypress",
+    "Playwright",
+    "WebdriverIO",
+    "Appium",
+    "Detox",
+    "Selenium WebDriver",
+    "JavaScript",
+    "Java",
+    "GitLab",
+    "GitHub",
+    "Postman",
+    "ClickUp",
+    "Jenkins",
+    "BrowserStack",
+    "TestRail",
+    "Asana"
+  ],
+  "languages": ["Spanish", "English"],
+  "experience": [
+    {
+      "company": "Thryv",
+      "country": "United States",
+      "locationType": "Remote",
+      "role": "QA Automation Engineer",
+      "dates": "Nov 2023 – Present",
+      "stack": [
+        "Cypress",
+        "Appium",
+        "WebdriverIO",
+        "GitHub",
+        "Asana",
+        "TestRail",
+        "BrowserStack"
+      ],
+      "responsibilities": [
+        "Generate detailed reports and documentation for automated and manual testing efforts.",
+        "Integrate automated tests into CI/CD pipelines for continuous validation.",
+        "Automate web and mobile testing using Cypress, Playwright, and Appium with WebdriverIO.",
+        "Maintain and refactor the QA automation framework.",
+        "Lead the migration of testing framework from Cypress to Playwright."
+      ]
+    },
+    {
+      "company": "Banco Popular Dominicano",
+      "country": "Dominican Republic",
+      "locationType": "Hybrid",
+      "role": "Project Lead – QA Automation",
+      "dates": "May 2023 – Nov 2023",
+      "stack": ["Cypress", "Jenkins", "Postman", "Bitbucket", "Jira", "Zephyr"],
+      "responsibilities": [
+        "Ensure software quality by identifying and reporting defects.",
+        "Design, maintain, and update manual and automated test scripts.",
+        "Develop and manage test plans and test strategies.",
+        "Mentor QA team members in testing best practices.",
+        "Support DevOps team with setting up automated testing in the CI/CD pipeline."
+      ]
+    },
+    {
+      "company": "Portal",
+      "country": "Dominican Republic",
+      "locationType": "Remote",
+      "role": "QA Automation Engineer",
+      "dates": "Aug 2022 – May 2023",
+      "stack": [
+        "ClickUp",
+        "Postman",
+        "Cypress",
+        "WebdriverIO",
+        "Appium",
+        "GitLab"
+      ],
+      "responsibilities": [
+        "Plan, create, and manage the overall QA strategy.",
+        "Collaborate with developers to diagnose and resolve defects.",
+        "Analyze test results to identify improvement areas.",
+        "Develop and maintain automated test suites for mobile apps.",
+        "Ensure high coverage and accuracy through continuous testing."
+      ]
+    },
+    {
+      "company": "Oriontek",
+      "country": "Dominican Republic",
+      "locationType": "Remote",
+      "role": "QA Engineer",
+      "dates": "Sept 2021 – Aug 2022",
+      "stack": ["GitLab", "VS Code", "Postman", "Cypress", "Azure"],
+      "responsibilities": [
+        "Review requirements and design documents, providing meaningful feedback.",
+        "Design and execute automated tests using Cypress.",
+        "Track QA metrics such as defect densities and open defect counts.",
+        "Contribute to continuous improvement of development processes."
+      ]
+    },
+    {
+      "company": "Oriontek (Contract)",
+      "country": "Dominican Republic",
+      "locationType": "Remote",
+      "role": "Junior QA Manual",
+      "dates": "Feb 2020 – Sept 2021",
+      "stack": ["Azure DevOps", "Jira", "Postman"],
+      "responsibilities": [
+        "Create and execute detailed and well-structured test cases based on requirements.",
+        "Track and report quality metrics such as defects and test execution counts.",
+        "Conduct regression tests to validate functionality after code changes.",
+        "Participate in Agile ceremonies and contribute testing updates and feedback."
+      ]
+    }
+  ],
+  "education": {
+    "degree": "Bachelor’s in Systems and Computer Engineering",
+    "institution": "Universidad Dominicana O&M",
+    "location": "Santo Domingo, Dominican Republic",
+    "dates": "2018 – 2023"
+  },
+  "certifications": [
+    {
+      "name": "Certified Tester Foundation Level (CTFL)",
+      "issuer": "ISTQB",
+      "id": "22-CTFL-01479-USA",
+      "year": 2021
+    },
+    {
+      "name": "Certified Associate in Scrum Fundamentals (CASF)",
+      "issuer": "SkillFront",
+      "id": "99969608777224",
+      "year": 2021
+    }
+  ],
+  "portfolioProfile": {
+    "shortBio": "QA Automation Engineer with over 5 years of experience in manual and automated testing, specializing in Cypress, Playwright, and Appium. Experienced in fintech, CRM, and payments platforms, with strong focus on scalability, CI/CD integration, and reduction of flakiness in test pipelines.",
+    "focusAreas": [
+      "Test Automation (Web & Mobile)",
+      "CI/CD Pipeline Integration",
+      "Framework Design & Migration",
+      "Cross-platform Testing",
+      "Quality Strategy & Reporting"
+    ]
+  }
+}
