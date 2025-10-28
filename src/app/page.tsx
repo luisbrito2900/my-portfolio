@@ -17,6 +17,20 @@ import {
 
 export default function Portfolio() {
   const [navOpen, setNavOpen] = useState(false);
+  const [pointer, setPointer] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.currentTarget as HTMLElement;
+    const rect = target.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    target.style.setProperty('--x', `${x}px`);
+    target.style.setProperty('--y', `${y}px`);
+    setPointer({ x, y });
+  };
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -102,13 +116,15 @@ export default function Portfolio() {
           <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
             <a
               href='#projects'
-              className='px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-lg flex items-center gap-2 hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105'
+              onMouseMove={handleMouseMove}
+              className='button-glow px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full font-semibold text-lg flex items-center gap-2 hover:shadow-lg hover:shadow-purple-500/50 transition-all hover:scale-105'
             >
               View Projects <ArrowRight />
             </a>
             <a
               href='#contact'
-              className='px-8 py-4 border border-white/20 rounded-full font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105'
+              onMouseMove={handleMouseMove}
+              className='button-glow px-8 py-4 border border-white/20 rounded-full font-semibold text-lg hover:bg-white/10 transition-all hover:scale-105'
             >
               Contact Me
             </a>
@@ -198,7 +214,8 @@ export default function Portfolio() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className='p-6 rounded-2xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 border border-white/10 backdrop-blur-sm hover:border-white/20 hover:scale-105 transition-all cursor-pointer'
+                  onMouseMove={handleMouseMove}
+                  className='button-glow p-6 rounded-2xl bg-gradient-to-br from-purple-600/20 to-pink-600/20 border border-white/10 backdrop-blur-sm hover:border-white/20 hover:scale-105 transition-all cursor-pointer'
                 >
                   <div className='text-purple-400 mb-4'>{item.icon}</div>
                   <h3 className='text-xl font-semibold mb-2'>{item.title}</h3>
@@ -251,7 +268,10 @@ export default function Portfolio() {
             ].map((category: { title: string; tech: string[] }, i) => (
               <div key={i} className='relative group'>
                 <div className='absolute inset-0 bg-gradient-to-r from-purple-600/50 to-pink-600/50 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300 rounded-3xl' />
-                <div className='relative p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-all h-full'>
+                <div
+                  onMouseMove={handleMouseMove}
+                  className='button-glow relative p-8 rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-all h-full'
+                >
                   <h3 className='text-2xl font-bold mb-6'>{category.title}</h3>
                   <div className='space-y-3'>
                     {category.tech.map((tech: string, j: number) => (
@@ -325,7 +345,8 @@ export default function Portfolio() {
             ].map((project, i) => (
               <div
                 key={i}
-                className='group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 hover:-translate-y-2 transition-all cursor-pointer'
+                onMouseMove={handleMouseMove}
+                className='button-glow group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 hover:-translate-y-2 transition-all cursor-pointer'
               >
                 <div className='absolute inset-0 bg-gradient-to-r from-purple-600/50 to-pink-600/50 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300' />
                 <div className='relative p-6 h-full flex flex-col'>
