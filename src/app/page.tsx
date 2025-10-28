@@ -34,7 +34,21 @@ export default function Portfolio() {
   };
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.getElementById(id);
+    if (element) {
+      // Esperar un momento para que el DOM se actualice
+      setTimeout(() => {
+        const offset = 100; // Mayor offset para mejor visualización
+        const elementPosition =
+          element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }, 10);
+    }
     setNavOpen(false);
   };
 
@@ -46,8 +60,21 @@ export default function Portfolio() {
       {/* Navigation */}
       <nav className='fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10'>
         <div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
-          <div className='text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'>
-            Luis Brito
+          <div className='flex items-center gap-3'>
+            <div className='w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 p-0.5'>
+              <div className='w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden'>
+                <Image
+                  src='/logo.png'
+                  alt='LB Logo'
+                  width={40}
+                  height={40}
+                  className='rounded-full object-cover w-full h-full p-1'
+                />
+              </div>
+            </div>
+            <div className='text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'>
+              Luis Brito
+            </div>
           </div>
 
           <div className='hidden md:flex gap-8'>
