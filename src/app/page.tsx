@@ -14,7 +14,11 @@ import {
   Smartphone,
   GitBranch,
   Search,
+  Building2,
+  MapPin,
+  Calendar,
 } from 'lucide-react';
+import profileData from '../profile.json';
 
 export default function Portfolio() {
   const [navOpen, setNavOpen] = useState(false);
@@ -60,7 +64,10 @@ export default function Portfolio() {
       {/* Navigation */}
       <nav className='fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-white/10'>
         <div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
-          <div className='flex items-center gap-3'>
+          <button
+            onClick={() => scrollToSection('home')}
+            className='flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer'
+          >
             <div className='w-10 h-10 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 p-0.5'>
               <div className='w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden'>
                 <Image
@@ -75,10 +82,17 @@ export default function Portfolio() {
             <div className='text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent'>
               Luis Brito
             </div>
-          </div>
+          </button>
 
           <div className='hidden md:flex gap-8'>
-            {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+            {[
+              'Home',
+              'About',
+              'Experience',
+              'Skills',
+              'Projects',
+              'Contact',
+            ].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
@@ -99,17 +113,22 @@ export default function Portfolio() {
         {navOpen && (
           <div className='md:hidden bg-black/95 backdrop-blur-lg p-6 border-t border-white/10'>
             <div className='flex flex-col gap-4'>
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map(
-                (item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase())}
-                    className='text-left text-white/80 hover:text-white transition-colors cursor-pointer'
-                  >
-                    {item}
-                  </button>
-                )
-              )}
+              {[
+                'Home',
+                'About',
+                'Experience',
+                'Skills',
+                'Projects',
+                'Contact',
+              ].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className='text-left text-white/80 hover:text-white transition-colors cursor-pointer'
+                >
+                  {item}
+                </button>
+              ))}
             </div>
           </div>
         )}
@@ -134,10 +153,26 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <h1 className='text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent'>
-            Hello, I'm Luis
+          <h1 className='text-5xl md:text-7xl font-bold mb-6 font-mono'>
+            {"<Hello, I'm Luis />".split('').map((char, index) =>
+              char === ' ' ? (
+                <span
+                  key={index}
+                  className='bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent'
+                >
+                  &nbsp;
+                </span>
+              ) : (
+                <span
+                  key={index}
+                  className='bounce-letter bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent inline-block'
+                >
+                  {char}
+                </span>
+              )
+            )}
           </h1>
-          <h2 className='text-5xl md:text-7xl font-bold mb-8'>SDET</h2>
+          <h2 className='text-4xl md:text-6xl font-bold mb-8'>SDET</h2>
           <p className='text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto'>
             ISTQB Certified Tester with 5+ years of experience
           </p>
@@ -198,7 +233,10 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id='about' className='min-h-screen py-20 px-6 relative z-10'>
+      <section
+        id='about'
+        className='min-h-screen pt-24 pb-24 px-6 relative z-10'
+      >
         <div className='max-w-7xl mx-auto'>
           <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             About Me
@@ -263,8 +301,216 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Experience Section */}
+      <section
+        id='experience'
+        className='min-h-screen pt-12 pb-24 px-6 relative z-10 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent'
+      >
+        <div className='max-w-7xl mx-auto'>
+          <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
+            Work Experience
+          </h2>
+
+          <div className='space-y-8'>
+            {/* Thryv */}
+            <div
+              onMouseMove={handleMouseMove}
+              className='button-glow group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all cursor-pointer'
+            >
+              <div className='absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+              <div className='relative p-8'>
+                <div className='flex flex-col md:flex-row md:items-center md:justify-between mb-4'>
+                  <div>
+                    <h3 className='text-2xl font-bold mb-2 flex items-center gap-2'>
+                      <Building2 className='text-purple-400' size={24} />
+                      Software Test Engineer
+                    </h3>
+                    <p className='text-xl text-purple-300 mb-2 flex items-center gap-2'>
+                      Thryv
+                    </p>
+                    <div className='flex flex-wrap items-center gap-3 text-sm text-gray-400'>
+                      <span className='flex items-center gap-1'>
+                        <MapPin size={14} />
+                        United States • Remote
+                      </span>
+                      <span className='flex items-center gap-1'>
+                        <Calendar size={14} />
+                        Nov 2023 – Present
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <p className='text-gray-300 mb-4'>
+                  Automating test cases for web and mobile platforms using
+                  Cypress, and Appium. Mentoring team members on automation best
+                  practices, integrating automated tests into CI/CD pipelines,
+                  and maintaining scalable QA frameworks for reliable test
+                  execution.
+                </p>
+                <div className='flex flex-wrap gap-2'>
+                  {profileData.experience[0].stack.map((tech: string) => (
+                    <span
+                      key={tech}
+                      className='px-3 py-1 text-xs rounded-full bg-purple-500/20 border border-purple-500/30'
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Banco Popular */}
+            <div
+              onMouseMove={handleMouseMove}
+              className='button-glow group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all cursor-pointer'
+            >
+              <div className='absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+              <div className='relative p-8'>
+                <div className='flex flex-col md:flex-row md:items-center md:justify-between mb-4'>
+                  <div>
+                    <h3 className='text-2xl font-bold mb-2 flex items-center gap-2'>
+                      <Building2 className='text-purple-400' size={24} />
+                      Project Lead – QA Automation
+                    </h3>
+                    <p className='text-xl text-purple-300 mb-2'>
+                      Dominican Popular Bank
+                    </p>
+                    <div className='flex flex-wrap items-center gap-3 text-sm text-gray-400'>
+                      <span className='flex items-center gap-1'>
+                        <MapPin size={14} />
+                        Dominican Republic • Hybrid
+                      </span>
+                      <span className='flex items-center gap-1'>
+                        <Calendar size={14} />
+                        May 2023 – Nov 2023
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <p className='text-gray-300 mb-4'>
+                  Led QA team, developed test strategies, mentored members, and
+                  set up CI/CD pipelines for automated testing with DevOps.
+                </p>
+                <div className='flex flex-wrap gap-2'>
+                  {profileData.experience[1].stack.map((tech: string) => (
+                    <span
+                      key={tech}
+                      className='px-3 py-1 text-xs rounded-full bg-pink-500/20 border border-pink-500/30'
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Portal */}
+            <div
+              onMouseMove={handleMouseMove}
+              className='button-glow group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all cursor-pointer'
+            >
+              <div className='absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+              <div className='relative p-8'>
+                <div className='flex flex-col md:flex-row md:items-center md:justify-between mb-4'>
+                  <div>
+                    <h3 className='text-2xl font-bold mb-2 flex items-center gap-2'>
+                      <Building2 className='text-purple-400' size={24} />
+                      QA Automation Engineer
+                    </h3>
+                    <p className='text-xl text-purple-300 mb-2'>Portal</p>
+                    <div className='flex flex-wrap items-center gap-3 text-sm text-gray-400'>
+                      <span className='flex items-center gap-1'>
+                        <MapPin size={14} />
+                        Dominican Republic • Hybrid
+                      </span>
+                      <span className='flex items-center gap-1'>
+                        <Calendar size={14} />
+                        Aug 2022 – May 2023
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <p className='text-gray-300 mb-4'>
+                  Planned and managed overall QA strategy. Developed automated
+                  test suites for mobile apps ensuring high coverage and
+                  accuracy through continuous testing.
+                </p>
+                <div className='flex flex-wrap gap-2'>
+                  {profileData.experience[2].stack.map((tech: string) => (
+                    <span
+                      key={tech}
+                      className='px-3 py-1 text-xs rounded-full bg-blue-500/20 border border-blue-500/30'
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Oriontek (Unified) */}
+            <div
+              onMouseMove={handleMouseMove}
+              className='button-glow group relative overflow-hidden rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all cursor-pointer'
+            >
+              <div className='absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+              <div className='relative p-8'>
+                <div className='flex flex-col md:flex-row md:items-center md:justify-between mb-4'>
+                  <div>
+                    <h3 className='text-2xl font-bold mb-2 flex items-center gap-2'>
+                      <Building2 className='text-purple-400' size={24} />
+                      QA Engineer (Jr → Mid)
+                    </h3>
+                    <p className='text-xl text-purple-300 mb-2'>Oriontek</p>
+                    <div className='flex flex-wrap items-center gap-3 text-sm text-gray-400'>
+                      <span className='flex items-center gap-1'>
+                        <MapPin size={14} />
+                        Dominican Republic • Remote
+                      </span>
+                      <span className='flex items-center gap-1'>
+                        <Calendar size={14} />
+                        Feb 2020 – Aug 2022
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <p className='text-gray-300 mb-4'>
+                  Progressed from manual to automated testing. Designed and
+                  executed Cypress tests, tracked QA metrics, and contributed to
+                  continuous improvement of development processes.
+                </p>
+                <div className='flex flex-wrap gap-2'>
+                  <span className='px-3 py-1 text-xs rounded-full bg-orange-500/20 border border-orange-500/30'>
+                    Cypress
+                  </span>
+                  <span className='px-3 py-1 text-xs rounded-full bg-orange-500/20 border border-orange-500/30'>
+                    Postman
+                  </span>
+                  <span className='px-3 py-1 text-xs rounded-full bg-orange-500/20 border border-orange-500/30'>
+                    GitLab
+                  </span>
+                  <span className='px-3 py-1 text-xs rounded-full bg-orange-500/20 border border-orange-500/30'>
+                    Azure
+                  </span>
+                  <span className='px-3 py-1 text-xs rounded-full bg-orange-500/20 border border-orange-500/30'>
+                    Jira
+                  </span>
+                  <span className='px-3 py-1 text-xs rounded-full bg-orange-500/20 border border-orange-500/30'>
+                    Agile
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
-      <section id='skills' className='min-h-screen py-20 px-6 relative z-10'>
+      <section
+        id='skills'
+        className='min-h-screen pt-24 pb-24 px-6 relative z-10'
+      >
         <div className='max-w-7xl mx-auto'>
           <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             Skills & Technologies
@@ -325,7 +571,10 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id='projects' className='min-h-screen py-20 px-6 relative z-10'>
+      <section
+        id='projects'
+        className='min-h-screen pt-12 pb-24 px-6 relative z-10'
+      >
         <div className='max-w-7xl mx-auto'>
           <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             Featured Projects
@@ -334,46 +583,100 @@ export default function Portfolio() {
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {[
               {
-                title: 'Thryv CRM Platform',
+                title: 'Playwright Automation Exercise',
                 description:
-                  'Led migration from Cypress to Playwright. Automated web and mobile testing with CI/CD integration',
-                tech: ['Playwright', 'Cypress', 'Appium', 'WebdriverIO'],
-                image: '🎯',
+                  'Web automation framework with POM, dynamic data, and CI/CD-ready utilities. Validates E2E authentication flows.',
+                tech: ['Playwright', 'TypeScript', 'POM', 'GitHub Actions'],
+                icon: (
+                  <Image
+                    src='/playwright-logo.png'
+                    alt='Playwright'
+                    width={48}
+                    height={48}
+                    className='w-12 h-12 object-contain'
+                  />
+                ),
+                link: 'https://github.com/luisbrito2900/playwright-automation-exercise',
               },
               {
-                title: 'Banco Popular Automation',
+                title: 'Automation Exercise (Cypress)',
                 description:
-                  'QA Project Lead developing test strategies, mentoring team, and setting up CI/CD pipelines',
-                tech: ['Cypress', 'Jenkins', 'Postman', 'TestRail'],
-                image: '🏦',
+                  'Production-style Cypress framework automating full e-commerce flow with Page Objects and HTML reporting.',
+                tech: ['Cypress', 'JavaScript', 'Faker.js', 'Mochawesome'],
+                icon: (
+                  <Image
+                    src='/cypress-logo.svg'
+                    alt='Cypress'
+                    width={48}
+                    height={48}
+                    className='w-12 h-12 object-contain'
+                  />
+                ),
+                link: 'https://github.com/luisbrito2900/automation-exercise-cypress',
               },
               {
-                title: 'Portal QA Framework',
+                title: 'iOS Test App',
                 description:
-                  'Built and managed end-to-end QA strategy with automated test suites for mobile applications',
-                tech: ['Cypress', 'WebdriverIO', 'Appium', 'GitLab'],
-                image: '📱',
+                  'Lightweight SwiftUI app instrumented for testability with XCUITest coverage using accessibility identifiers.',
+                tech: ['SwiftUI', 'XCUITest', 'Xcode', 'iOS 17'],
+                icon: (
+                  <Image
+                    src='/xcuitest-logo.png'
+                    alt='iOS XCUITest'
+                    width={48}
+                    height={48}
+                    className='w-12 h-12 object-contain'
+                  />
+                ),
+                link: 'https://github.com/luisbrito2900/iOS-Test-App',
               },
               {
-                title: 'Oriontek Test Framework',
+                title: 'Espresso UI Tests Demo',
                 description:
-                  'Developed automated test suites using Cypress, tracked QA metrics, and improved development processes',
-                tech: ['Cypress', 'Postman', 'Azure', 'Jira'],
-                image: '🧪',
+                  'Kotlin Android Todo app with production-like Espresso UI test suite. Demonstrates end-to-end CRUD flows.',
+                tech: ['Kotlin', 'Espresso', 'AndroidX', 'Room'],
+                icon: (
+                  <Image
+                    src='/espresso-logo.png'
+                    alt='Espresso'
+                    width={48}
+                    height={48}
+                    className='w-12 h-12 object-contain'
+                  />
+                ),
+                link: 'https://github.com/luisbrito2900/EspressoUITestsDemo',
               },
               {
-                title: 'Mobile Testing Suite',
+                title: 'API Testing CodeceptJS PoC',
                 description:
-                  'Cross-platform mobile testing with Appium and Detox for iOS and Android applications',
-                tech: ['Appium', 'Detox', 'WebdriverIO', 'BrowserStack'],
-                image: '📲',
+                  'REST API testing Proof-of-Concept using CodeceptJS with REST and JSONResponse helpers.',
+                tech: ['CodeceptJS', 'TypeScript', 'REST', 'API Testing'],
+                icon: (
+                  <Image
+                    src='/codecept-logo.svg'
+                    alt='CodeceptJS'
+                    width={48}
+                    height={48}
+                    className='w-12 h-12 object-contain'
+                  />
+                ),
+                link: 'https://github.com/luisbrito2900/codeceptjs-api-poc',
               },
               {
-                title: 'CI/CD Integration',
+                title: 'Mocha Test Example',
                 description:
-                  'Integrated automated tests into CI/CD pipelines for continuous validation and quality assurance',
-                tech: ['Jenkins', 'GitHub Actions', 'GitLab CI', 'Postman'],
-                image: '⚙️',
+                  'Minimal Mocha + Chai setup demonstrating a basic unit test suite in Node.js for simple math operations.',
+                tech: ['Mocha', 'Chai', 'Node.js', 'Unit Tests'],
+                icon: (
+                  <Image
+                    src='/mocha-logo.png'
+                    alt='Mocha'
+                    width={48}
+                    height={48}
+                    className='w-12 h-12 object-contain'
+                  />
+                ),
+                link: 'https://github.com/luisbrito2900/mocha-test-example',
               },
             ].map((project, i) => (
               <div
@@ -383,7 +686,7 @@ export default function Portfolio() {
               >
                 <div className='absolute inset-0 bg-gradient-to-r from-purple-600/50 to-pink-600/50 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300' />
                 <div className='relative p-6 h-full flex flex-col'>
-                  <div className='text-6xl mb-4'>{project.image}</div>
+                  <div className='mb-4 flex justify-center'>{project.icon}</div>
                   <h3 className='text-2xl font-bold mb-3'>{project.title}</h3>
                   <p className='text-gray-400 mb-4 flex-grow'>
                     {project.description}
@@ -400,16 +703,12 @@ export default function Portfolio() {
                   </div>
                   <div className='flex gap-3'>
                     <a
-                      href='#'
+                      href={project.link}
+                      target='_blank'
+                      rel='noopener noreferrer'
                       className='flex items-center gap-2 text-sm font-semibold hover:text-purple-400 transition-colors'
                     >
-                      View Demo <ExternalLink size={16} />
-                    </a>
-                    <a
-                      href='#'
-                      className='flex items-center gap-2 text-sm font-semibold hover:text-pink-400 transition-colors'
-                    >
-                      Code <Github size={16} />
+                      View Repo <Github size={16} />
                     </a>
                   </div>
                 </div>
@@ -420,7 +719,10 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id='contact' className='min-h-screen py-20 px-6 relative z-10'>
+      <section
+        id='contact'
+        className='min-h-screen pt-24 pb-24 px-6 relative z-10'
+      >
         <div className='max-w-4xl mx-auto'>
           <h2 className='text-5xl font-bold mb-16 text-center bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent leading-tight pb-2'>
             Let's Work Together!
