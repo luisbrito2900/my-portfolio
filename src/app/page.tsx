@@ -26,6 +26,18 @@ export default function Portfolio() {
     x: 0,
     y: 0,
   });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [formStatus, setFormStatus] = useState<{
+    type: 'idle' | 'loading' | 'success' | 'error';
+    message: string;
+  }>({
+    type: 'idle',
+    message: '',
+  });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.currentTarget as HTMLElement;
@@ -54,6 +66,51 @@ export default function Portfolio() {
       }, 10);
     }
     setNavOpen(false);
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setFormStatus({ type: 'loading', message: 'Sending...' });
+
+    try {
+      const response = await fetch('https://formspree.io/f/xovpkqob', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setFormStatus({
+          type: 'success',
+          message: "Message sent successfully! I'll get back to you soon.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      setFormStatus({
+        type: 'error',
+        message: 'Failed to send message. Please try again.',
+      });
+    }
   };
 
   return (
@@ -218,7 +275,7 @@ export default function Portfolio() {
               <Linkedin size={28} />
             </a>
             <a
-              href='mailto:luisjahziel1029@gmail.com'
+              href='mailto:lbritolpara@gmail.com'
               onMouseMove={handleMouseMove}
               className='button-glow text-white/60 hover:text-white hover:scale-125 transition-all'
             >
@@ -734,34 +791,60 @@ export default function Portfolio() {
               can make it a reality.
             </p>
 
-            <form className='space-y-6'>
+            <form onSubmit={handleSubmit} className='space-y-6'>
               <div>
                 <input
                   type='text'
+                  name='name'
+                  value={formData.name}
+                  onChange={handleInputChange}
                   placeholder='Name'
+                  required
                   className='w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors'
                 />
               </div>
               <div>
                 <input
                   type='email'
+                  name='email'
+                  value={formData.email}
+                  onChange={handleInputChange}
                   placeholder='Email'
+                  required
                   className='w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors'
                 />
               </div>
               <div>
                 <textarea
+                  name='message'
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder='Message'
                   rows={6}
+                  required
                   className='w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none'
                 />
               </div>
+              {formStatus.message && (
+                <div
+                  className={`p-4 rounded-xl ${
+                    formStatus.type === 'success'
+                      ? 'bg-green-500/20 border border-green-500/50 text-green-400'
+                      : formStatus.type === 'error'
+                      ? 'bg-red-500/20 border border-red-500/50 text-red-400'
+                      : 'bg-blue-500/20 border border-blue-500/50 text-blue-400'
+                  }`}
+                >
+                  {formStatus.message}
+                </div>
+              )}
               <button
                 type='submit'
+                disabled={formStatus.type === 'loading'}
                 onMouseMove={handleMouseMove}
-                className='button-glow w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105 transition-all'
+                className='button-glow w-full px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/50 hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100'
               >
-                Send Message
+                {formStatus.type === 'loading' ? 'Sending...' : 'Send Message'}
               </button>
             </form>
 
@@ -785,7 +868,7 @@ export default function Portfolio() {
                 <Linkedin size={24} />
               </a>
               <a
-                href='mailto:luisjahziel1029@gmail.com'
+                href='mailto:lbritolpara@gmail.com'
                 onMouseMove={handleMouseMove}
                 className='button-glow p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-110 transition-all'
               >
